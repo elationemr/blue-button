@@ -8,8 +8,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "grunt mocha",
-    "postpack": "tarball=$(npm list — depth 0 | sed ‘s/@/-/g; s/ .*/.tgz/g; 1q;’); tar -tf $tarball | sed ‘s/^package\\///’ | zip -@r package; rm $tarball"
+    "test": "grunt mocha"
   },
   "author": "Dmitry Kachaev <dmitry@amida-tech.com>",
   "contributors": [

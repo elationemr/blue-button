@@ -3,7 +3,7 @@ name: generate-lambda-package
 on: [push, pull_request]
 
 jobs:
-  format-and-lint:
+  generate-lambda-package:
     strategy:
       matrix:
         platform:
@@ -22,6 +22,7 @@ jobs:
           mkdir nodejs
           npm install --production
           npm pack
+          tarball=$(npm list — depth 0 | sed ‘s/@/-/g; s/ .*/.tgz/g; 1q;’); tar -tf $tarball | sed ‘s/^package\\///’ | zip -@r package; rm $tarball
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
         with:
