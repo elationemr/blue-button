@@ -4,10 +4,6 @@ on: [push, pull_request]
 
 jobs:
   generate-lambda-package:
-    strategy:
-      matrix:
-        platform:
-          - ubuntu-latest
     name: Generate lambda package
     runs-on: ubuntu-latest
     steps:
@@ -17,13 +13,15 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 12
-      - name: Install dependencies
+      - name: Package the library
         run: |
           npm install --production
-      - name: Package the library
-        run: npm pack
-      - name: Convert to zip file
-        run: tar xzf blue-button-1.10.1.tgz && zip package.zip $(tar tf blue-button-1.10.1.tgz)
+          npm pack
+          mkdir nodejs
+          cd nodejs
+          npm install ../blue-button-1.10.1.tgz
+          cd ..
+          zip package.zip nodejs -vr
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
         with:
