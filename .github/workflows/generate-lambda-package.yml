@@ -17,11 +17,15 @@ jobs:
         run: |
           npm install --production
           npm pack
-          tar xzf blue-button-1.10.1.tgz
-          mv package nodejs
+          cp blue-button-1.10.1.tgz ../blue-button-1.10.1.tgz
+          mkdir ../nodejs
+          cd ../nodejs
+          npm install ../blue-button-1.10.1.tgz
+          cd ..
           zip -r package.zip nodejs
       - name: Archive lambda layer zip
         uses: actions/upload-artifact@v3
+        working-directory: ../
         with:
           name: lambda-layer-zip
           path: package.zip
