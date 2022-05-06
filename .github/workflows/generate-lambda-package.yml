@@ -17,6 +17,8 @@ jobs:
         run: |
           npm install --production
           npm pack
+          cp blue-button-1.10.1.tgz ../blue-button-1.10.1.tgz
+          cd ..
           mkdir nodejs
           cd nodejs
           npm install ../blue-button-1.10.1.tgz
