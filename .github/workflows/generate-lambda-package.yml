@@ -19,12 +19,11 @@ jobs:
           node-version: 12
       - name: Run npm command
         run: |
-          mkdir -p nodejs
-          npm install --prefix ./nodejs git+ssh://git@github.com:elationemr/blue-button.git#feature/lambda --production
-      - name: Zip nodejs
-        run: zip blue-button nodejs -vr
+          mkdir nodejs
+          npm install --production
+          npm pack
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
         with:
           name: lambda-layer-zip
-          path: blue-button.zip
+          path: package.zip

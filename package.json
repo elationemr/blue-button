@@ -8,7 +8,8 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "grunt mocha"
+    "test": "grunt mocha",
+    "postpack": "tarball=$(npm list — depth 0 | sed ‘s/@/-/g; s/ .*/.tgz/g; 1q;’); tar -tf $tarball | sed ‘s/^package\\///’ | zip -@r package; rm $tarball"
   },
   "author": "Dmitry Kachaev <dmitry@amida-tech.com>",
   "contributors": [
@@ -46,6 +47,15 @@
     "lodash": "^3.10.0",
     "winston": "~1.0.0"
   },
+  "bundledDependencies": [
+    "blue-button-cms",
+    "blue-button-meta",
+    "blue-button-model",
+    "blue-button-xml",
+    "libxmljs",
+    "lodash",
+    "winston"
+  ],
   "devDependencies": {
     "brfs": "~1.4.0",
     "chai": "~3.0.0",
