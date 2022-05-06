@@ -2,6 +2,8 @@
 node_modules/
 npm-debug.log
 coverage
+.cache
+.npm
 
 # Bower
 bower_components
