@@ -17,12 +17,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 12
-      - name: Run npm command
+      - name: Install dependencies
         run: |
-          mkdir nodejs
           npm install --production
-          npm pack
-          tarball=$(npm list — depth 0 | sed ‘s/@/-/g; s/ .*/.tgz/g; 1q;’); tar -tf $tarball | sed ‘s/^package\\///’ | zip -@r package; rm $tarball
+      - name: Package the library
+        run: npm pack
+      - name: Convert to zip file
+        run: tarball=$(npm list — depth 0 | sed ‘s/@/-/g; s/ .*/.tgz/g; 1q;’); tar -tf $tarball | sed ‘s/^package\\///’ | zip -@r package; rm $tarball
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
         with:
