@@ -18,7 +18,8 @@ jobs:
           npm install --production
           npm pack
           tar xzf blue-button-1.10.1.tgz
-          mv package nodejs
+          mkdir nodejs
+          mv -v package/* nodejs/
           zip package.zip nodejs
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
