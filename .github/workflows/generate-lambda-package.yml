@@ -1,0 +1,30 @@
+name: generate-lambda-package
+
+on: [push, pull_request]
+
+jobs:
+  format-and-lint:
+    strategy:
+      matrix:
+        platform:
+          - ubuntu-latest
+    name: Format and lint ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out git repo
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 12
+      - name: Run npm command
+        run: |
+          mkdir -p nodejs
+          npm install --prefix ./nodejs git+ssh://git@github.com:elationemr/blue-button.git#feature/lambda --production
+      - name: Zip nodejs
+        run: zip blue-button nodejs -vr
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: lambda-layer-zip
+          path: blue-button.zip
