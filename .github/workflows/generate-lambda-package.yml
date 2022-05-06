@@ -19,8 +19,8 @@ jobs:
           npm pack
           tar xzf blue-button-1.10.1.tgz
           mv package nodejs
-          zip package.zip nodejs
-      - name: Archive code coverage results
+          zip -r package.zip nodejs
+      - name: Archive lambda layer zip
         uses: actions/upload-artifact@v3
         with:
           name: lambda-layer-zip
