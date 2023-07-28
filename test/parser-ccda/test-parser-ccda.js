@@ -3,7 +3,7 @@ var fs = require('fs');
 var bb = require('../../index.js');
 
 describe('parser.js', function () {
-  it('CCDA parse medication free text sig', function(done) {
+  it('CCDA parse medication free text sig', function (done) {
     //Medication Free Text Sig
     //The template is available to explicitly identify the free text Sig within each medication.
 
@@ -23,7 +23,7 @@ describe('parser.js', function () {
     done();
   });
 
-  it('CCDA parse problem_text', function(done) {
+  it('CCDA parse problem_text', function (done) {
     var xmlfile = fs.readFileSync(__dirname + '/../fixtures/parser-ccda/CCDA_ProblemSample.xml', 'utf-8').toString();
     expect(xmlfile).toBeDefined();
 

@@ -103,7 +103,7 @@ describe('sense.js test', function () {
     it('should return NCPDP for NCPDP file input', function () {
       expect('ncpdp').toEqual(senseString(ncpdp).type);
     });
-  } catch (ex) { }
+  } catch (ex) {}
 
   it('should return FORMAT-X for format X text input', function () {
     expect('format-x').toEqual(senseString(format_x).type);
