@@ -3027,6 +3027,11 @@ https://github.com/HL7/C-CDA-Examples/blob/master/Documents/CCD/CCD%201/CCD.XML
                   <td>12</td>
                   <td>Since February, 2012</td>
                 </tr>
+                <tr ID="SexualOrientation21">
+									<td>Sexual Orientation</td>
+									<td ID="SexualOrientation21Value">Not on file</td>
+									<td/>
+								</tr>
               </tbody>
             </table>
           </text>
@@ -3054,6 +3059,25 @@ https://github.com/HL7/C-CDA-Examples/blob/master/Documents/CCD/CCD%201/CCD.XML
               </author>
             </observation>
           </entry>
+          <entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<templateId extension="2022-06-01" root="2.16.840.1.113883.10.20.22.4.501"/>
+							<templateId root="2.16.840.1.113883.10.20.22.4.38"/>
+							<templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.4.38"/>
+							<id nullFlavor="UNK"/>
+							<code code="76690-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Sexual orientation"/>
+							<text>
+								<reference value="#SexualOrientation21"/>
+							</text>
+							<statusCode code="completed"/>
+							<effectiveTime nullFlavor="UNK"/>
+							<value nullFlavor="UNK" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CD">
+								<originalText>
+									<reference value="#SexualOrientation21Value"/>
+								</originalText>
+							</value>
+						</observation>
+					</entry>
         </section>
       </component>
       <!-- ************* VITAL SIGNS *************** -->
