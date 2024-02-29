@@ -101,6 +101,7 @@ describe('parser.js', function () {
 
     // social_history value was parsed
     expect(result.data.social_history[0].value).toBe('12');
+    expect(result.data.social_history[1].identifiers[0].identifier).toBeDefined();
 
     done();
   });
